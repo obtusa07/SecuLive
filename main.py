@@ -53,11 +53,13 @@ while True:
         y1 = int(detect[i, 4] * h)
         x2 = int(detect[i, 5] * w)
         y2 = int(detect[i, 6] * h)
-
-        cv2.rectangle(frame, (x1, y1), (x2, y2), (0, 255, 0))
-
+        #초록색 상자로 체크해주는 박스
+        #cv2.rectangle(frame, (x1, y1), (x2, y2), (0, 255, 0))
+        roi = frame[y1:y2, x1:x2]
+        dst = cv2.blur(roi, (50, 50))
+        frame[y1:y2, x1:x2] = dst
         label = f'Face: {confidence:4.2f}'
-        cv2.putText(frame, label, (x1, y1 - 1), cv2.FONT_HERSHEY_SIMPLEX, 0.8, (0, 255, 0), 1, cv2.LINE_AA)
+        cv2.putText(frame, label, (x1, y1 - 1), cv2.FONT_HERSHEY_SIMPLEX, 0.6, (0, 255, 0), 1, cv2.LINE_AA)
 
     cv2.imshow('frame', frame)
 
@@ -65,9 +67,6 @@ while True:
         break
 
 cv2.destroyAllWindows()
-
-
-
 
 # 사진 얼굴 인증 코드 잔재
 # import sys
