@@ -10,13 +10,10 @@ config = 'deploy.prototxt'
 net = cv2.dnn.readNet(model, config)
 
 
-cap = cv2.VideoCapture('iu.mp4')
+#cap = cv2.VideoCapture('iu.mp4')
 #cap = cv2.VideoCapture('godok.mp4')
 #cap = cv2.VideoWriter('')
-#cap = cv2.VideoCapture(0)
-
-
-
+cap = cv2.VideoCapture(0)
 # 이 부분은 카메라 오픈이 안 될경우를 위한 함수
 # if not cap.isOpened():
 #     print('Camera open failed!')
@@ -30,10 +27,8 @@ if net.empty():
 
 while True:
     ret, frame = cap.read()
-
     if not ret:
         break
-
     blob = cv2.dnn.blobFromImage(frame, 1, (300, 300), (104, 177, 123))
     net.setInput(blob)
     out = net.forward()
@@ -44,7 +39,7 @@ while True:
     prevTime = curTime
     fps = 1 / (sec)
     str = "FPS : %0.1f" % fps
-    cv2.putText(frame, str, (0, 100), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0))
+    cv2.putText(frame, str, (0, 40), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 0, 0))
     ###########################################
     detect = out[0, 0, :, :]
     (h, w) = frame.shape[:2]
