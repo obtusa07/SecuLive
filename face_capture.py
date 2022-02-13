@@ -3,7 +3,6 @@ import sys
 import glob
 import cv2
 
-
 def save_face(frame, p1, p2, filename):
     cp = ((p1[0] + p2[0])//2, (p1[1] + p2[1])//2)
 
@@ -47,7 +46,7 @@ if net.empty():
 
 # Output Directory & File Index
 
-outdir = 'User1'
+outdir = 'train_images/User1'
 prefix = outdir + '/face_'
 file_idx = 1
 
