@@ -49,7 +49,7 @@ session = ""
 # [코드]
 # 0. 내장 카메라 및 오디오 선택
 camera = cv2.VideoCapture(0)
-audio = "마이크(USB Microphone)"
+audio = "마이크(3- USB Microphone)"
 
 # 1. 내장 카메라 정보 저장 (fps, width, height)
 fps = int(camera.get(cv2.CAP_PROP_FPS))
